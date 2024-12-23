@@ -3,3 +3,6 @@
 /**/*.pem
 /**/*.pem-chain
 /**/*.ca.pem
+
+bookcars-db/
+.DS_Store
