@@ -19,7 +19,7 @@ const Footer = () => {
 
   return (
     <div className="footer">
-      <div className="header">BookCars</div>
+      <div className="header">Volo</div>
       <section className="main">
         <div className="main-section">
           <div className="title">{strings.CORPORATE}</div>
