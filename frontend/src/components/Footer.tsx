@@ -44,7 +44,7 @@ const Footer = () => {
           </ul>
           <div className="footer-contact">
             <MailOutline className="icon" />
-            <a href="mailto:info@bookcars.ma">info@bookcars.ma</a>
+            <a href="mailto:info@volo.ma">info@volo.ma</a>
           </div>
           <div className="footer-contact">
             <IconButton href="https://www.facebook.com/" target="_blank" aria-label="Facebook" className="social-icon"><FacebookIcon /></IconButton>

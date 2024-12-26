@@ -1,0 +1,54 @@
+services:
+  # nginx:
+  #     image: nginx:stable-alpine
+  #     volumes:
+  #       - cdn:/var/www/cdn/bookcars
+  #     ports:
+  #       - 80:80
+  api:
+    build: 
+      context: .
+      dockerfile: ./api/Dockerfile.dev
+    env_file: ./api/.env.dev.docker
+    restart: always
+    ports:
+      - 4002:4002
+    depends_on:
+      - mongo
+    volumes:
+      - ./api:/bookcars/api
+      - /bookcars/api/node_modules
+      - cdn:/var/www/cdn/bookcars
+    command: npm run dev
+
+
+  mongo:
+    image: mongo:latest
+    command: mongod --quiet --logpath /dev/null
+    restart: always
+    environment:
+      # Provide your credentials here
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin123
+    ports:
+      - 27017:27017
+
+  backend:
+    build: 
+      context: .
+      dockerfile: ./backend/Dockerfile
+    ports:
+      - 3001:3001
+
+  # frontend:
+  #   build: 
+  #     context: .
+  #     dockerfile: ./frontend/Dockerfile
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #   volumes:
+  #     - cdn:/var/www/cdn/bookcars
+
+volumes:
+  cdn:
