@@ -1,5 +1,5 @@
 import React, { useState, useEffect, memo } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {
   AppBar,
   Toolbar,
@@ -51,6 +51,7 @@ import { useUserContext, UserContextType } from '@/context/UserContext'
 import { useInit } from '@/common/customHooks'
 
 import '@/assets/css/header.css'
+import Logo from './Logo'
 
 const flagHeight = 28
 
@@ -391,15 +392,17 @@ const Header = ({
   return (
     (!hidden && (
       <div style={classes.grow} className="header">
-        <AppBar position="relative" sx={{ bgcolor: '#fff', boxShadow: 'none', borderBottom: '1px solid #ddd' }}>
+        <AppBar position="relative" sx={{ bgcolor: '#59B0EA', boxShadow: 'none' }}>
           <Toolbar className="toolbar">
             {isLoaded && !loading && (
               <>
                 {env.isMobile && <IconButton edge="start" sx={classes.menuButton} aria-label="open drawer" onClick={handleSideMenuOpen}>
-                  <MenuIcon />
+                  <MenuIcon style={{color: "#fff"}}/>
                 </IconButton>}
 
-                <Button onClick={() => navigate('/')} className="logo">Volo</Button>
+                <Link to={"/"} className="logo">
+                  <Logo fillColor='#fff' />
+                </Link>
 
                 {!env.isMobile && headerTitle && <div className="header-title">{headerTitle}</div>}
               </>
