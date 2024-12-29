@@ -31,8 +31,6 @@ services:
       dockerfile: ./backend/Dockerfile
     depends_on:
       - api
-    ports:
-      - 3001:3001
     volumes:
       - /etc/letsencrypt/live/volo.ma/privkey.pem:/etc/ssl/volo.key
       - /etc/letsencrypt/live/volo.ma/fullchain.pem:/etc/ssl/volo.crt
@@ -44,7 +42,8 @@ services:
     depends_on:
       - api
     ports:
-      - 3002:3002
+      - 80:80
+      - 443:443
     volumes:
       - cdn:/var/www/cdn/bookcars
       - /etc/letsencrypt/live/volo.ma/privkey.pem:/etc/ssl/volo.key
