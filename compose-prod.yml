@@ -11,6 +11,8 @@ services:
       - mongo
     volumes:
       - cdn:/var/www/cdn/bookcars
+      - /etc/letsencrypt/live/volo.ma/privkey.pem:/etc/ssl/volo.key
+      - /etc/letsencrypt/live/volo.ma/fullchain.pem:/etc/ssl/volo.crt
 
   mongo:
     image: mongo:latest
@@ -31,6 +33,9 @@ services:
       - api
     ports:
       - 3001:3001
+    volumes:
+      - /etc/letsencrypt/live/volo.ma/privkey.pem:/etc/ssl/volo.key
+      - /etc/letsencrypt/live/volo.ma/fullchain.pem:/etc/ssl/volo.crt
 
   frontend:
     build: 
@@ -43,6 +48,8 @@ services:
       - 443:443
     volumes:
       - cdn:/var/www/cdn/bookcars
+      - /etc/letsencrypt/live/volo.ma/privkey.pem:/etc/ssl/volo.key
+      - /etc/letsencrypt/live/volo.ma/fullchain.pem:/etc/ssl/volo.crt
 
 volumes:
   cdn:
