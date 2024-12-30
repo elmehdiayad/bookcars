@@ -1,5 +1,7 @@
-import React from 'react'
+import ReactMarkdown from 'react-markdown'
 import Layout from '@/components/Layout'
+import Footer from '@/components/Footer'
+import { strings } from '@/lang/about'
 
 import '@/assets/css/about.css'
 
@@ -9,11 +11,10 @@ const About = () => {
   return (
     <Layout onLoad={onLoad} strict={false}>
       <div className="about">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-        in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-        sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <h1>{strings.ABOUT_US_TITLE}</h1>
+        <ReactMarkdown >{strings.ABOUT_US}</ReactMarkdown>
       </div>
+      <Footer />
     </Layout>
   )
 }

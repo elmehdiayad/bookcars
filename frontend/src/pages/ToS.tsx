@@ -1,7 +1,7 @@
-import React from 'react'
 import { strings } from '@/lang/tos'
 import Layout from '@/components/Layout'
 import Footer from '@/components/Footer'
+import ReactMarkdown from 'react-markdown'
 
 import '@/assets/css/tos.css'
 
@@ -11,7 +11,7 @@ const ToS = () => {
   return (
     <Layout onLoad={onLoad} strict={false}>
       <div className="tos">
-        {strings.TOS}
+        <ReactMarkdown>{strings.TOS}</ReactMarkdown>
       </div>
       <Footer />
     </Layout>

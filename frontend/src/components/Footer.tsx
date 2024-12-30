@@ -49,23 +49,23 @@ const Footer = () => {
           </ul>
           <div className="footer-contact">
             <MailOutline className="icon" />
-            <a href="mailto:info@volo.ma">info@volo.ma</a>
+            <a href="mailto:info@volo.ma">contact@volo.ma</a>
           </div>
           <div className="footer-contact">
             <IconButton href="https://www.facebook.com/" target="_blank" aria-label="Facebook" className="social-icon"><FacebookIcon /></IconButton>
             <IconButton href="https://x.com/" target="_blank" aria-label="X" className="social-icon"><X /></IconButton>
             <IconButton href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn" className="social-icon"><LinkedIn /></IconButton>
-            <IconButton href="https://www.instagram.com/" target="_blank" aria-label="Instagram" className="social-icon"><Instagram /></IconButton>
+            <IconButton href="https://www.instagram.com/volo.maroc" target="_blank" aria-label="Instagram" className="social-icon"><Instagram /></IconButton>
           </div>
           <div className="newsletter">
             <NewsletterForm />
           </div>
         </div>
       </section>
-      <section className="payment">
+      {/* <section className="payment">
         <div className="payment-text">{strings.SECURE_PAYMENT}</div>
         <img src={SecurePayment} alt="" />
-      </section>
+      </section> */}
       <section className="copyright">
         <div className="copyright">
           <span>{strings.COPYRIGHT_PART1}</span>
