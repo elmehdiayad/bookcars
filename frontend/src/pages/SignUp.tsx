@@ -51,6 +51,8 @@ const SignUp = () => {
   const [phoneValid, setPhoneValid] = useState(true)
   const [phone, setPhone] = useState('')
   const [birthDateValid, setBirthDateValid] = useState(true)
+  const [nationalId, setNationalId] = useState('')
+  const [nationalIdValid, setNationalIdValid] = useState(true)
 
   const handleFullNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFullName(e.target.value)
@@ -156,6 +158,28 @@ const SignUp = () => {
     }
   }
 
+  const handleNationalIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNationalId(e.target.value)
+
+    if (!e.target.value) {
+      setNationalIdValid(true)
+    }
+  }
+
+  const validateNationalId = (_nationalId?: string) => {
+    if (_nationalId) {
+      const _nationalIdValid = _nationalId.length >= 5
+      setNationalIdValid(_nationalIdValid)
+      return _nationalIdValid
+    }
+    setNationalIdValid(true)
+    return true
+  }
+
+  const handleNationalIdBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    validateNationalId(e.target.value)
+  }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault()
@@ -215,10 +239,16 @@ const SignUp = () => {
         return
       }
 
+      const _nationalIdValid = validateNationalId(nationalId)
+      if (!_nationalIdValid) {
+        return
+      }
+
       setLoading(true)
 
       const data: bookcarsTypes.SignUpPayload = {
         email,
+        nationalId,
         phone,
         password,
         fullName,
@@ -305,6 +335,22 @@ const SignUp = () => {
                   </FormHelperText>
                 </FormControl>
                 <FormControl fullWidth margin="dense">
+                  <InputLabel className="required">{commonStrings.NATIONAL_ID}</InputLabel>
+                  <OutlinedInput
+                    type="text"
+                    label={commonStrings.NATIONAL_ID}
+                    error={!nationalIdValid}
+                    value={nationalId}
+                    onBlur={handleNationalIdBlur}
+                    onChange={handleNationalIdChange}
+                    required
+                    autoComplete="off"
+                  />
+                  <FormHelperText error={!nationalIdValid}>
+                    {(!nationalIdValid && commonStrings.NATIONAL_ID_NOT_VALID) || ''}
+                  </FormHelperText>
+                </FormControl>
+                <FormControl fullWidth margin="dense">
                   <InputLabel className="required">{commonStrings.PHONE}</InputLabel>
                   <OutlinedInput
                     type="text"
@@ -368,6 +414,7 @@ const SignUp = () => {
                     }}
                   />
                 </FormControl>
+
 
                 <div className="signup-tos">
                   <table>
