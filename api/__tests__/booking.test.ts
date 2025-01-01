@@ -194,6 +194,7 @@ describe('POST /api/create-booking', () => {
         fullInsurance: false,
         price: 312,
         additionalDriver: true,
+        nationalId: 'ABC123',
       },
       additionalDriver: ADDITIONAL_DRIVER,
     }
@@ -249,6 +250,7 @@ describe('POST /api/checkout', () => {
         fullInsurance: false,
         price: 312,
         additionalDriver: true,
+        nationalId: 'ABC123',
       },
       payLater: true,
     }
@@ -539,6 +541,7 @@ describe('POST /api/checkout', () => {
       fullName: 'driver2',
       email: testHelper.GetRandomEmail(),
       language: testHelper.LANGUAGE,
+      nationalId: 'XYZ789',
     }
     res = await request(app)
       .post('/api/checkout')
@@ -762,6 +765,7 @@ describe('POST /api/update-booking', () => {
         fullInsurance: false,
         price: 3520,
         additionalDriver: true,
+        nationalId: 'DEF456',
       },
       additionalDriver: ADDITIONAL_DRIVER,
     }
