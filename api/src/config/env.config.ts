@@ -405,7 +405,8 @@ export interface User extends Document {
   license?: string | null
   minimumRentalDays?: number
   expireAt?: Date
-  nationalId: string
+  nationalId?: string
+  licenseId?: string
 }
 
 /**
